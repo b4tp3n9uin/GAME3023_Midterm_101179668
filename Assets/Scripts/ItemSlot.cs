@@ -2,22 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
+using UnityEngine.EventSystems;     //using the event system for drag and drop.
 
 // Display item in the slot, update image, make clickable when there is an item, invisible when there is not
-public class ItemSlot : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler, IDropHandler
+public class ItemSlot : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
     public Item itemInSlot = null;
-    RectTransform rectTransform;
+    RectTransform rectTransform; //Rect Transform for the item's position.
     CanvasGroup canvasGroup;
-    public BoxCollider2D box;
-    public bool isInBox = false;
+    public BoxCollider2D box; //Added Box Collider to items so, they don't overlap with each other.
 
     [SerializeField]
     private Canvas canvas;
 
     [SerializeField]
-    private int itemCount = 0;
+    private int itemCount = 0; // Amount of a certain item you have.
     public int ItemCount
     {
         get
@@ -31,9 +30,9 @@ public class ItemSlot : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     }
 
     [SerializeField]
-    private Image icon;
+    private Image icon; // Icon of the item
     [SerializeField]
-    private TMPro.TextMeshProUGUI itemCountText;
+    private TMPro.TextMeshProUGUI itemCountText; // Text for the item count
 
     void Start()
     {
@@ -81,21 +80,12 @@ public class ItemSlot : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
         }
     }
 
-    public void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.CompareTag("slots"))
-        {
-            isInBox = true;
-            Debug.Log("InBox");
-        }
-    }
-
-    public void OnPointerDown(PointerEventData eventData)
+    public void OnPointerDown(PointerEventData eventData) //when you touch an item with a click
     {
         //Debug.Log("Ptr Down");
     }
 
-    public void OnBeginDrag(PointerEventData eventData)
+    public void OnBeginDrag(PointerEventData eventData) // drag begins
     {
         //Debug.Log("Begin Drag");
         canvasGroup.alpha = 0.6f;
@@ -103,7 +93,7 @@ public class ItemSlot : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
         box.isTrigger = true;
     }
 
-    public void OnEndDrag(PointerEventData eventData)
+    public void OnEndDrag(PointerEventData eventData) // drag ends
     {
         //Debug.Log("End Drag");
         canvasGroup.alpha = 1.0f;
@@ -111,13 +101,8 @@ public class ItemSlot : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
         box.isTrigger = false;
     }
 
-    public void OnDrag(PointerEventData eventData)
+    public void OnDrag(PointerEventData eventData) // Dragging the item
     {
         rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
-    }
-
-    public void OnDrop(PointerEventData eventData)
-    {
-        //Debug.Log("On Drop");
     }
 }
