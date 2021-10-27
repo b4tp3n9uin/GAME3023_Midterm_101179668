@@ -1,4 +1,14 @@
-# GAME3023-F2021-Midterm Exam
+# Matthew Makepeace - GAME3023-F2021-Midterm Exam
+
+by: Matthew Makepeace
+
+Here is my Midterm Project. There is a drag and drop system with the items. There is also scriptable objects for the items, and a scriptable items table.
+
+---References---
+
+Code Monkey. (2019, November 15). Simple Drag Drop (Unity Tutorial for Beginners). YouTube. https://www.youtube.com/watch?v=BGr-7GZJNXg&t=535s
+
+Code Monkey. (2021, June 28). Awesome Inventory Tetris System! (Resident Evil 4, Escape from Tarkov). Youtube. https://www.youtube.com/watch?v=fxaDBE71UHA&t=338s
 
 Assets licensed under Creative Commons https://creativecommons.org/licenses/
 
